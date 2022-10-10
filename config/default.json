@@ -1,0 +1,8 @@
+{
+    "DATABASE_URL": "postgres://cm:cm@localhost:5432/cmdb",
+    "GRPC_HOST": "localhost",
+    "GRPC_PORT": "8001",
+    "KAFKA_BROKERS": "localhost:9092",
+    "PRICE_DROP_TOPIC": "tag-wise-price-drop-queue",
+    "APP_ENV": "dev"
+}

@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package pricedrop_query_proto;
+
+message ChildProduct {
+  float discount = 1;
+  string discount_type = 2;
+  int32 moq = 3;
+  float mrp = 4;
+  string price_per_unit = 5;
+  float price_tl_commission = 6;
+  float price_tl_single_buy = 7;
+  string sku_id = 8;
+  string custom_text = 9;
+  string custom_symbol = 10;
+  string coupon_code = 11;
+}
+
+message ProdWithChildren {
+  float discount = 1;
+  string discount_type = 2;
+  int32 moq = 3;
+  float mrp = 4;
+  string price_per_unit = 5;
+  float price_tl_commission = 6;
+  float price_tl_single_buy = 7;
+  string sku_id = 8;
+  string custom_text = 9;
+  string custom_symbol = 10;
+  string coupon_code = 11;
+  float min_cart_value = 12;
+  repeated ChildProduct children = 13;
+};
+
+message ApplyPriceDropReq {
+  repeated ProdWithChildren productsInput = 1;
+  string catalogue_name = 2;
+  repeated string userTags = 3;
+  optional string trace_id = 4;
+};
+
+message ApplyPriceDropResp {
+  repeated ProdWithChildren productsOutput = 1;
+};
+
+service PriceDropQueryService {
+  rpc ApplyPriceDrops(ApplyPriceDropReq) returns (ApplyPriceDropResp) {};
+};
